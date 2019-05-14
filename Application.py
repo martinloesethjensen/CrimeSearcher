@@ -34,7 +34,7 @@ def check_value(value):
 
 if __name__ == '__main__':
     # get crime list from csv file
-    crime_list = CSVParser.load_csv("csv-files/SacramentocrimeJanuary2006.txt")
+    crime_list = CSVParser.load_csv_to_list("csv-files/SacramentocrimeJanuary2006.txt")
 
     is_quit = False
     while not is_quit:
