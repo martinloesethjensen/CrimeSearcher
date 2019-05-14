@@ -40,3 +40,4 @@ if __name__ == '__main__':
     while not is_quit:
         main_menu()
         is_quit = check_value(get_input())
+    exit()
