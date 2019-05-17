@@ -1,10 +1,12 @@
+import simple_colors
+
 import CSVParser
+import printer
+import value_checker
 
-global_crime_list = []
 
-
-def get_input() -> int:
-    user_input = input("Please enter a number: ")
+def get_input(desc) -> int:
+    user_input = input(desc)
     try:
         value = int(user_input)
         return value
@@ -12,43 +14,28 @@ def get_input() -> int:
         return 0
 
 
-def main_menu():
-    print()
-    print("Enter 1: Search for a crime")
-    print("Enter 2: Report a crime")
-    print("Enter 3: Find crimes in proximity")
-    print("Enter -1: Quit")
-    print()
+def get_crimes_from_term(search_term: str, category: str) -> list:
+    print(simple_colors.yellow(f'Search term: {search_term}\n'
+                               f'Category: {category}'))
+    return [row for row in get_crime_list() if row[category] == search_term.upper()]
 
 
-def get_crimes_from_term(search_term) -> list:
-    return [row for row in global_crime_list if row['crimedescr'] == search_term.upper()]
-
-
-def print_results(results):
-    for result in results:
-        print(result)
+def get_category():
+    return value_checker.check_search_value(get_input(simple_colors.yellow("Please enter a number: ")))
 
 
 def search():
-    search_term = input("Search: ")
-    results = get_crimes_from_term(search_term)
-    print_results(results)
+    search_quit = "0"
+    category = ""
 
+    while search_quit == "0":
+        printer.print_categories()
+        search_quit = category = get_category()
 
-def check_value(value):
-    if value == 0:
-        print("Not a valid option...")
-        return False
-    elif value == -1:
-        print("Quiting...")
-        return True
-    elif value == 1:
-        search()
-
-    # TODO: add last option when functionality is done.
-
-    return False
+    if category != "-1":
+        search_term = input("Search: ")
+        results = get_crimes_from_term(search_term, category)
+        printer.print_results(results)
 
 
 # get crime list from csv file
@@ -57,12 +44,8 @@ def get_crime_list() -> list:
 
 
 if __name__ == '__main__':
-    crime_list = get_crime_list()
-
-    global_crime_list = crime_list
-
     is_quit = False
     while not is_quit:
-        main_menu()
-        is_quit = check_value(get_input())
+        printer.print_main_menu()
+        is_quit = value_checker.check_value(get_input(simple_colors.yellow("Please enter a number: ")))
     exit()
