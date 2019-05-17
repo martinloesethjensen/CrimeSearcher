@@ -1,6 +1,6 @@
 import simple_colors
 
-from application import search
+from app import search
 
 
 def check_value(value):
