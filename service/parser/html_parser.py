@@ -1,10 +1,8 @@
 import os
 import webbrowser
 
-from service import csv_parser
 
-
-def beautify_data(data):
+def beautify_data_html(data):
     beautiful_string = ""
     counter = 1
     for item in data:
@@ -56,7 +54,7 @@ def parse_html(data):
                     <th>latitude</th>
                     <th>longitude</th>
                 </tr>
-                    """ + beautify_data(data) + """
+                    """ + beautify_data_html(data) + """
             </table>
         </body>
     </html>
@@ -65,11 +63,3 @@ def parse_html(data):
     html_file.close()
 
     webbrowser.open("file://" + os.path.realpath("../output-files/dataset.html"))
-
-
-def json_parser(data):
-    pass
-
-
-if __name__ == '__main__':
-    parse_html(csv_parser.load_csv_to_list("../csv-files/SacramentocrimeJanuary2006.txt"))
