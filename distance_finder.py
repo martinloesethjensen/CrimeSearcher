@@ -1,5 +1,6 @@
 from geopy.distance import great_circle
 
+
 def __get_lon_lat():
     from urllib.request import urlopen
     import json
@@ -8,7 +9,6 @@ def __get_lon_lat():
         temp_var = (json_data["loc"]).split(",")
         temp_var = [float(data) for data in temp_var]
         return tuple(temp_var)
-
 
 
 def calculate_distance(other_loc):
@@ -22,4 +22,4 @@ def get_scanned_locations_list(data_list):
         coords = (item["latitude"], item["longitude"])
         if calculate_distance(coords) < 5.0:
             scanned_list.append(item)
-    return (scanned_list)
+    return scanned_list
