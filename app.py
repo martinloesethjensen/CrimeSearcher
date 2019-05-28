@@ -38,7 +38,7 @@ def search():
 
 # get crime list from csv file
 def get_crime_list() -> list:
-    return csv_parser.load_csv_to_list("csv-files/SacramentocrimeJanuary2006.txt")
+    return csv_parser.load_csv_to_list("csv-files/SacramentocrimeJanuary2006.csv")
 
 
 if __name__ == '__main__':
