@@ -10,11 +10,11 @@ def load_csv_to_list(csv_file: str) -> list:  # TODO: test and do a try except
 
 def write_record_to_csv(csv_file: str, crimes: list):
     with open(csv_file, mode='w') as csv_file:
-        column = "cdatetime,address,district,beat,grid,crimedescr,ucr_ncic_code,latitude,longitude"
+        column = "cdatetime,address,district,beat,grid,crimedescr,ucr_ncic_code,latitude,longitude\n"
         csv_file.write(column)
 
         for crime in crimes:
-            row = "{cdatetime},{address},{district},{beat},{grid},{crimedescr},{ucr_ncic_code},{latitude},{longitude}" \
+            row = "{cdatetime},{address},{district},{beat},{grid},{crimedescr},{ucr_ncic_code},{latitude},{longitude}\n" \
                 .format(cdatetime=crime['cdatetime'],
                         address=crime['address'],
                         district=crime['district'],

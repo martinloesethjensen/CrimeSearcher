@@ -12,6 +12,8 @@ def check_value(value):
         return True
     elif value == 1:
         app.search()
+    elif value == 2:
+        app.report_crime()
 
     # TODO: add last option when functionality is done.
 
