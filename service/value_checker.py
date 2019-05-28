@@ -1,6 +1,6 @@
 import simple_colors
 
-from app import search
+from app import search, print_crimes_by_proximity
 
 
 def check_value(value):
@@ -12,7 +12,8 @@ def check_value(value):
         return True
     elif value == 1:
         search()
-
+    elif value == 3:
+        print_crimes_by_proximity()
     # TODO: add last option when functionality is done.
 
     return False

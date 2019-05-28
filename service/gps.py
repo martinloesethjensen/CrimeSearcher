@@ -32,7 +32,6 @@ def get_scanned_locations_list(data_list, src_loc=None):
 
     try:
         for item in data_list:
-
             coords = (item["latitude"], item["longitude"])
 
             if src_loc is None:
@@ -45,4 +44,6 @@ def get_scanned_locations_list(data_list, src_loc=None):
     except:
         print("Error in data! Tried to parse", coords)
 
+    if len(scanned_list) is 0:
+        print("No crimes in proximity!")
     return scanned_list

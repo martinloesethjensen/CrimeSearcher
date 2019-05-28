@@ -1,4 +1,5 @@
 import simple_colors
+import service.gps as gps
 
 from service import csv_parser, printer, value_checker
 
@@ -40,6 +41,16 @@ def search():
 def get_crime_list() -> list:
     return csv_parser.load_csv_to_list("csv-files/SacramentocrimeJanuary2006.txt")
 
+def print_crimes_by_proximity(src_loc=None):
+    use_current_loc = (input(simple_colors.magenta("If you want to input your own longitude and latitude, please input 1.\nIf you wish to use your current location, hit ENTER!")))
+    if use_current_loc is "1":
+        src_loc = (input(simple_colors.red("Longitude & Latitude: ")))
+        scanned_list = gps.get_scanned_locations_list(get_crime_list(), src_loc)
+        printer.print_results(scanned_list)
+
+    else:
+        scanned_list = gps.get_scanned_locations_list(get_crime_list(), src_loc)
+        printer.print_results(scanned_list)
 
 if __name__ == '__main__':
     is_quit = False
