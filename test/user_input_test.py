@@ -8,6 +8,6 @@ class TestUserInput(unittest.TestCase):
         # User input should be of type int
         self.assertEqual(type(get_input("Enter any number: ")), int)
 
-    def test_user_input_should_be_value_error(self):
+    def test_user_input_should_return_zero(self):
         # Should return 0 if user enters anything except a number
         self.assertEqual(get_input("Enter any except a number: "), 0)
