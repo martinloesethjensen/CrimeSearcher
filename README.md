@@ -27,4 +27,4 @@ pip install simple-colors | pip install geographiclib | pip install geopy
 * The application should be able to export the whole dataset into json and html formats, and should be able to export search results in json and and html formats as well.
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](LICENSE)
