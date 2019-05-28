@@ -1,6 +1,6 @@
 import simple_colors
 
-from app import search
+import app
 
 
 def check_value(value):
@@ -11,7 +11,7 @@ def check_value(value):
         print(simple_colors.red("Quiting..."))
         return True
     elif value == 1:
-        search()
+        app.search()
 
     # TODO: add last option when functionality is done.
 
