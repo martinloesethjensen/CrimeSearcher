@@ -35,4 +35,4 @@ def print_results(results):
                                  f'\n\t{"latitude:" :20} {result["latitude"]}'
                                  f'\n\t{"longitude:" :20} {result["longitude"]}'))
 
-    print(simple_colors.cyan("Results: ", len(results)))
+    print(simple_colors.cyan(f'Results: {len(results)}'))
