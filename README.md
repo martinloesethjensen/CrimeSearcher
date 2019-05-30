@@ -6,6 +6,8 @@ crime_searcher is a terminal application to search for crimes committed in Sacra
 ## Installation 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install [simple-colors](https://pypi.org/project/simple-colors/), [geopy](https://pypi.org/project/geopy/), and [geographiclib](https://pypi.org/project/geographiclib/).
 
+You might need to to make a new python environment to install it. You can find further information on [how to make a python environment and activate it](https://docs.python.org/3/tutorial/venv.html#creating-virtual-environments). 
+
 ```bash
 pip install simple-colors | pip install geographiclib | pip install geopy
 
