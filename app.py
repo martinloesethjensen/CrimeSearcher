@@ -16,7 +16,7 @@ def get_number_input(desc) -> int:
 def get_crimes_from_term(search_term: str, category: str) -> list:
     print(simple_colors.yellow(f'Search term: {search_term}\n'
                                f'Category: {category}'))
-    return [row for row in get_crime_list() if row[category] == search_term.upper()]
+    return list(filter(lambda row: row[category] == search_term.upper(), get_crime_list()))
 
 
 def get_category():
@@ -50,7 +50,8 @@ def report_crime():
     new_crime['ucr_ncic_code'] = get_number_input(simple_colors.yellow("\tucr_ncic_code: "))
     new_crime['latitude'] = input(simple_colors.yellow("\tlatitude: "))
     new_crime['longitude'] = input(simple_colors.yellow("\tlongitude: "))
-    print(simple_colors.yellow("--- Saved new crime ---"))
+    print(simple_colors.yellow("\n--- Saved new crime ---"))
+    printer.print_record(new_crime)
     crimes.append(new_crime)
     csv_parser.write_record_to_csv("csv-files/SacramentocrimeJanuary2006.csv", crimes)
 

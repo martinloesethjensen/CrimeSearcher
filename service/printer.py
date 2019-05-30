@@ -36,3 +36,15 @@ def print_results(results):
                                  f'\n\t{"longitude:" :20} {result["longitude"]}'))
 
     print(simple_colors.cyan(f'Results: {len(results)}'))
+
+
+def print_record(result):
+    print(simple_colors.cyan(f'\t{"cdatetime:" :20} {result["cdatetime"]}'
+                             f'\n\t{"address:" :20} {result["address"]}'
+                             f'\n\t{"district:" :20} {result["district"]}'
+                             f'\n\t{"beat:" :20} {result["beat"]}'
+                             f'\n\t{"grid:" :20} {result["grid"]}'
+                             f'\n\t{"crimedescr:" :20} {result["crimedescr"]}'
+                             f'\n\t{"ucr_ncic_code:" :20} {result["ucr_ncic_code"]}'
+                             f'\n\t{"latitude:" :20} {result["latitude"]}'
+                             f'\n\t{"longitude:" :20} {result["longitude"]}'))
