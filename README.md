@@ -1,5 +1,5 @@
 # crime_searcher | Exam Project, Python Elective Spring 2019
-crime_searcher is a terminal application to search for crimes commited in Sacramento. Based on the dataset in the [SacramentocrimeJanuary2006.csv](csv-files/SacramentocrimeJanuary2006.csv) file.
+crime_searcher is a terminal application to search for crimes committed in Sacramento. Based on the dataset in the [SacramentocrimeJanuary2006.csv](csv-files/SacramentocrimeJanuary2006.csv) file.
 
 ![Last Commit](https://img.shields.io/github/last-commit/martinloesethjensen/crime_searcher.svg) ![Top Language](https://img.shields.io/github/languages/top/martinloesethjensen/crime_searcher.svg) ![License](https://img.shields.io/github/license/martinloesethjensen/crime_searcher.svg) ![Repo Size](https://img.shields.io/github/repo-size/martinloesethjensen/crime_searcher.svg) ![PyPi Implementation](https://img.shields.io/pypi/implementation/geopy.svg) ![Closed Pull Requests](https://img.shields.io/github/issues-pr-closed/martinloesethjensen/crime_searcher.svg)
 
@@ -10,6 +10,11 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install [simple
 pip install simple-colors | pip install geographiclib | pip install geopy
 
 ```
+
+## Usage
+Run the `app.py` to start the program. 
+
+Tests can be found in `test` folder.
 
 ## Exam Requirements
 * The project should be finished, meaning: don´t hand in and show up at the exam with something half done.  
