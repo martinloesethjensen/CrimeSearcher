@@ -1,7 +1,7 @@
 import simple_colors
 
 from service import printer, value_checker
-from service.parser import csv_parser
+from service.parser import csv_parser, html_parser, json_parser
 
 
 def get_number_input(desc) -> int:
@@ -23,9 +23,13 @@ def get_category():
     return value_checker.check_search_value(get_number_input(simple_colors.yellow("Please enter a number: ")))
 
 
+def get_export_format():
+    return value_checker.check_export_value(get_number_input(simple_colors.yellow("Please enter a number: ")))
+
+
 def search():
-    search_quit = "0"
-    category = ""
+    search_quit, export_quit = 2 * "0"
+    export_format, category = "", ""
 
     while search_quit == "0":
         printer.print_categories()
@@ -35,6 +39,16 @@ def search():
         search_term = input("Search: ")
         results = get_crimes_from_term(search_term, category)
         printer.print_results(results)
+        while export_quit == "0":
+            printer.print_export_options()
+            export_quit = export_format = get_export_format()
+            if export_format == "json":
+                json_parser.parse_json(results)
+            elif export_format == "html":
+                html_parser.parse_html(results)
+            print(simple_colors.yellow(
+                "--- Exported to {export_format} file ---".format(export_format=export_format.upper())))
+            print(simple_colors.yellow("--- File is located in 'output-files' folder ---"))
 
 
 def report_crime():

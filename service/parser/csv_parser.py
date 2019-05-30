@@ -8,6 +8,7 @@ def load_csv_to_list(csv_file: str) -> list:  # TODO: test and do a try except
         return [crime for crime in csv_reader]
 
 
+# Write new reported record to csv file
 def write_record_to_csv(csv_file: str, crimes: list):
     with open(csv_file, mode='w') as csv_file:
         column = "cdatetime,address,district,beat,grid,crimedescr,ucr_ncic_code,latitude,longitude\n"
