@@ -39,16 +39,17 @@ def search():
         search_term = input("Search: ")
         results = get_crimes_from_term(search_term, category)
         printer.print_results(results)
-        while export_quit == "0":
+        while export_quit == "0" and len(results) != 0:
             printer.print_export_options()
             export_quit = export_format = get_export_format()
             if export_format == "json":
                 json_parser.parse_json(results)
             elif export_format == "html":
                 html_parser.parse_html(results)
-            print(simple_colors.yellow(
-                "--- Exported to {export_format} file ---".format(export_format=export_format.upper())))
-            print(simple_colors.yellow("--- File is located in 'output-files' folder ---"))
+            if export_format != "-1":
+                print(simple_colors.yellow(
+                    "--- Exported to {export_format} file ---".format(export_format=export_format.upper())))
+                print(simple_colors.yellow("--- File is located in 'output-files' folder ---"))
 
 
 def report_crime():
