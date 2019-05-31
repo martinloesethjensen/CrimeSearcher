@@ -1,10 +1,7 @@
-import datetime
-
 import simple_colors
 from geopy.distance import great_circle
 
 from service import printer
-from service.parser import csv_parser
 
 
 def __get_lon_lat():
@@ -65,30 +62,11 @@ def print_crimes_by_proximity(crime_list, src_loc=None):
         scanned_list = get_scanned_locations_list(crime_list, src_loc)
         printer.print_results(scanned_list)
 
-        __write_crimes_by_proximity_csv(scanned_list)
+        # TODO write crimes to html/json
 
     elif use_current_loc is "2":
         scanned_list = get_scanned_locations_list(crime_list, src_loc)
         print(simple_colors.magenta("Started searching with CURRENT location..."))
         printer.print_results(scanned_list)
 
-        __write_crimes_by_proximity_csv(scanned_list)
-
-
-def __write_crimes_by_proximity_csv(scanned_list):
-    csv_write_request = (
-        input(simple_colors.magenta("Do you want your new data in a CSV file?\n"
-                                    "Input 1 for YES,\n"
-                                    "Input 2 for NO")))
-    if csv_write_request is "1":
-
-        curr_datetime = datetime.datetime.now()
-        curr_datetime.strftime('%m-%d-%y %H-%M')
-        curr_datetime = curr_datetime.replace(microsecond=0)
-        curr_datetime = str(curr_datetime)
-        curr_datetime = curr_datetime.replace(":", "-")
-        csv_parser.write_record_to_csv(str(curr_datetime), scanned_list)
-
-        print(simple_colors.magenta("Data has been written to CSV: " + curr_datetime))
-    elif csv_write_request is "2":
-        print(simple_colors.magenta("No CSV will be printed..."))
+        # TODO write crimes to html/json
