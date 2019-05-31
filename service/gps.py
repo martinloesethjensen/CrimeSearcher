@@ -4,6 +4,7 @@ from geopy.distance import great_circle
 from service import printer
 
 
+# Fetches the longitude and latitude of user from third party site and returns in tuple
 def __get_lon_lat():
     from urllib.request import urlopen
     import json
@@ -14,13 +15,8 @@ def __get_lon_lat():
         return tuple(temp_var)
 
 
-def calculate_distance_current(other_loc):
-    try:
-        distance = great_circle(__get_lon_lat(), other_loc)
-        return distance
-    except:
-        print("Error! Could not retrieve location or data input was faulty.")
-
+# Calculates distance between source lon/lat and target lon/lat using great_circle
+# and returns the distance in KM
 def calculate_distance(src_loc, other_loc):
     try:
         distance = great_circle(src_loc, other_loc)
@@ -29,16 +25,21 @@ def calculate_distance(src_loc, other_loc):
         print("Incorrect values were passed, please try again.")
 
 
+# Returns a list of scanned locations that were within proximity (5km) of source lon/lat
 def get_scanned_locations_list(data_list, src_loc=None):
 
     scanned_list = []
+    personal_coords = None
+
+    if src_loc is None:
+        personal_coords = __get_lon_lat()
 
     try:
         for item in data_list:
             coords = (item["latitude"], item["longitude"])
 
             if src_loc is None:
-                if calculate_distance_current(coords) < 5.0:
+                if calculate_distance(coords, personal_coords) < 5.0:
                     scanned_list.append(item)
             else:
                 if calculate_distance(src_loc, coords) < 5.0:
@@ -52,10 +53,11 @@ def get_scanned_locations_list(data_list, src_loc=None):
         print("Error in data! Tried to parse", coords)
 
 
+# Prints out the list of crimes in proximity for user to see
 def print_crimes_by_proximity(crime_list, src_loc=None):
     use_current_loc = (
         input(simple_colors.magenta("If you want to input your own longitude and latitude, please input 1.\n"
-                                    "If you wish to use your current location, input 2! WARNING: THIS COULD TAKE A LOT OF TIME DEPENDING ON LOCATION!")))
+                                    "If you wish to use your current location, input 2!")))
 
     if use_current_loc is "1":
         src_loc = (input(simple_colors.red("Longitude & Latitude: ")))
