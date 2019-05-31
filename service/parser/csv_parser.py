@@ -25,4 +25,3 @@ def write_record_to_csv(csv_file: str, crimes: list):
                         latitude=crime['latitude'],
                         longitude=crime['longitude'])
             csv_file.write(row)
-    csv_file.close()
