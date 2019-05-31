@@ -12,6 +12,13 @@ def print_categories():
     print(simple_colors.red("Enter -1: Go back\n"))
 
 
+def print_export_options():
+    print(simple_colors.green("\n--- Export Options ---"))
+    print(simple_colors.magenta("Enter 1: JSON format\n"
+                                "Enter 2: HTML format"))
+    print(simple_colors.red("Enter -1: Don't export\n"))
+
+
 def print_main_menu():
     print(simple_colors.green("\n--- Main Menu ---"))
     print(simple_colors.magenta("Enter 1: Search for a crime\n"

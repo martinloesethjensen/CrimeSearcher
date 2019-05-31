@@ -35,7 +35,7 @@ def beautify_data_html(data):
 
 
 def parse_html(data):
-    html_file = open("../output-files/dataset.html", "w")
+    html_file = open("output-files/dataset.html", "w")
 
     html_file.write("""
     <html>
@@ -62,4 +62,4 @@ def parse_html(data):
 
     html_file.close()
 
-    webbrowser.open("file://" + os.path.realpath("../output-files/dataset.html"))
+    webbrowser.open("file://" + os.path.realpath("output-files/dataset.html"))
