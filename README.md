@@ -1,7 +1,7 @@
 # crime_searcher | Exam Project, Python Elective Spring 2019
 crime_searcher is a terminal application to search for crimes committed in Sacramento. Based on the dataset in the [SacramentocrimeJanuary2006.csv](csv-files/SacramentocrimeJanuary2006.csv) file.
 
-![Last Commit](https://img.shields.io/github/last-commit/martinloesethjensen/crime_searcher.svg) ![Top Language](https://img.shields.io/github/languages/top/martinloesethjensen/crime_searcher.svg) ![License](https://img.shields.io/github/license/martinloesethjensen/crime_searcher.svg) ![Repo Size](https://img.shields.io/github/repo-size/martinloesethjensen/crime_searcher.svg) ![PyPi Implementation](https://img.shields.io/pypi/implementation/geopy.svg) ![Closed Pull Requests](https://img.shields.io/github/issues-pr-closed/martinloesethjensen/crime_searcher.svg)
+![Last Commit](https://img.shields.io/github/last-commit/martinloesethjensen/crime_searcher.svg) ![Top Language](https://img.shields.io/github/languages/top/martinloesethjensen/crime_searcher.svg) [![License: MIT](https://img.shields.io/github/license/martinloesethjensen/crime_searcher.svg)](LICENSE) ![Repo Size](https://img.shields.io/github/repo-size/martinloesethjensen/crime_searcher.svg) ![PyPi Implementation](https://img.shields.io/pypi/implementation/geopy.svg) ![Closed Pull Requests](https://img.shields.io/github/issues-pr-closed/martinloesethjensen/crime_searcher.svg)
 
 ## Installation 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install [simple-colors](https://pypi.org/project/simple-colors/), [geopy](https://pypi.org/project/geopy/), and [geographiclib](https://pypi.org/project/geographiclib/).
@@ -34,4 +34,4 @@ Tests can be found in `test` folder.
 * The application should be able to export the whole dataset into json and html formats, and should be able to export search results in json and and html formats as well.
 
 ## License
-[MIT](LICENSE)
+[![License: MIT](https://img.shields.io/github/license/martinloesethjensen/crime_searcher.svg)](LICENSE)
