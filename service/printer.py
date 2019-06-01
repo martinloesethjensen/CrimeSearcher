@@ -29,7 +29,7 @@ def print_main_menu():
 
 def print_proximity_options():
     print(simple_colors.green("\n--- Proximity Options ---"))
-    print(simple_colors.magenta("Enter 1: Input your own longitude and latitude\n"
+    print(simple_colors.magenta("Enter 1: Input your own longitude and latitude \'38.57037029,-121.4885667\'\n"
                                 "Enter 2: Use your current location\n\t"
                                 "WARNING: THIS COULD TAKE A LOT OF TIME DEPENDING ON LOCATION!"))
     print(simple_colors.red("Enter -1: Go back\n"))

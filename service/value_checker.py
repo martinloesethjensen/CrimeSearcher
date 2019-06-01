@@ -1,7 +1,6 @@
 import simple_colors
 
 import app
-from service import gps
 
 
 def check_value(value):
@@ -16,9 +15,7 @@ def check_value(value):
     elif value == 2:
         app.report_crime()
     elif value == 3:
-        gps.print_crimes_by_proximity(crime_list=app.get_crime_list())
-
-    # TODO: add last option when functionality is done.
+        app.proximity_search(crime_list=app.get_crime_list())
 
     return False
 
