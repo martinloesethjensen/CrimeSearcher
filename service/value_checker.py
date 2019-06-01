@@ -57,3 +57,17 @@ def check_export_value(value: int):
     elif value == 2:
         return "html"
     return "0"
+
+
+def check_proximity_option_value(value: int):
+    if value == 0:
+        print(simple_colors.red("Not a valid option..."))
+        return "0"
+    elif value == -1:
+        print(simple_colors.red("No proximity option chosen..."))
+        return "-1"
+    elif value == 1:
+        return "1"
+    elif value == 2:
+        return "2"
+    return "0"
