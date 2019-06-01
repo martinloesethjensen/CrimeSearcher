@@ -1,12 +1,14 @@
+import json
+from urllib.request import urlopen
+
 import simple_colors
 from geopy.distance import great_circle
 
 from service import printer
 
 
+# Getting lon and lat from ip location
 def __get_lon_lat():
-    from urllib.request import urlopen
-    import json
     with urlopen("http://ipinfo.io/json") as url:
         json_data = json.loads(url.read().decode())
         temp_var = (json_data["loc"]).split(",")
@@ -20,6 +22,7 @@ def calculate_distance_current(other_loc):
         return distance
     except:
         print("Error! Could not retrieve location or data input was faulty.")
+
 
 def calculate_distance(src_loc, other_loc):
     try:
@@ -49,24 +52,22 @@ def get_scanned_locations_list(data_list, src_loc=None):
         return scanned_list
 
     except:
-        print("Error in data! Tried to parse", coords)
+        print("Error in data!")
 
 
 def print_crimes_by_proximity(crime_list, src_loc=None):
     use_current_loc = (
         input(simple_colors.magenta("If you want to input your own longitude and latitude, please input 1.\n"
-                                    "If you wish to use your current location, input 2! WARNING: THIS COULD TAKE A LOT OF TIME DEPENDING ON LOCATION!")))
+                                    "If you wish to use your current location, input 2! "
+                                    "WARNING: THIS COULD TAKE A LOT OF TIME DEPENDING ON LOCATION!")))
 
     if use_current_loc is "1":
         src_loc = (input(simple_colors.red("Longitude & Latitude: ")))
         scanned_list = get_scanned_locations_list(crime_list, src_loc)
         printer.print_results(scanned_list)
 
-        # TODO write crimes to html/json
-
     elif use_current_loc is "2":
         scanned_list = get_scanned_locations_list(crime_list, src_loc)
         print(simple_colors.magenta("Started searching with CURRENT location..."))
         printer.print_results(scanned_list)
 
-        # TODO write crimes to html/json
