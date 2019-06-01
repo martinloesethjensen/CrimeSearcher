@@ -27,6 +27,18 @@ def get_export_format():
     return value_checker.check_export_value(get_number_input(simple_colors.yellow("Please enter a number: ")))
 
 
+# Method to handling exporting the to the chosen format
+def exporting(export_format, results):
+    if export_format == "json":
+        json_parser.parse_json(results)
+    elif export_format == "html":
+        html_parser.parse_html(results)
+    if export_format != "-1":
+        print(simple_colors.yellow(
+            "--- Exported to {export_format} file ---".format(export_format=export_format.upper())))
+        print(simple_colors.yellow("--- File is located in 'output-files' folder ---"))
+
+
 def search():
     search_quit, export_quit = 2 * "0"
     export_format, category = "", ""
@@ -42,14 +54,7 @@ def search():
         while export_quit == "0" and len(results) != 0:
             printer.print_export_options()
             export_quit = export_format = get_export_format()
-            if export_format == "json":
-                json_parser.parse_json(results)
-            elif export_format == "html":
-                html_parser.parse_html(results)
-            if export_format != "-1":
-                print(simple_colors.yellow(
-                    "--- Exported to {export_format} file ---".format(export_format=export_format.upper())))
-                print(simple_colors.yellow("--- File is located in 'output-files' folder ---"))
+            exporting(export_format, results)
 
 
 def report_crime():
