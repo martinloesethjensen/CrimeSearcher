@@ -20,15 +20,20 @@ def get_crimes_from_term(search_term: str, category: str) -> list:
     return list(filter(lambda row: row[category] == search_term.upper(), get_crime_list()))
 
 
+# Returns a list of scanned locations that were within proximity (5km) of source lon/lat
 def get_crimes_from_proximity(crime_list, src_loc) -> list:
     scanned_list = []
+    personal_coords = None
+
+    if src_loc is None:
+        personal_coords = gps.__get_lon_lat()
 
     try:
         for item in crime_list:
             coords = (item["latitude"], item["longitude"])
 
             if src_loc is None:
-                if gps.calculate_distance_current(coords) < 5.0:
+                if gps.calculate_distance(coords, personal_coords) < 5.0:
                     scanned_list.append(item)
             else:
                 if gps.calculate_distance(src_loc, coords) < 5.0:

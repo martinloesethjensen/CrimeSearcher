@@ -4,7 +4,7 @@ from urllib.request import urlopen
 from geopy.distance import great_circle
 
 
-# Getting lon and lat from ip location
+# Fetches the longitude and latitude of user from third party site and returns in tuple
 def __get_lon_lat():
     with urlopen("http://ipinfo.io/json") as url:
         json_data = json.loads(url.read().decode())
@@ -13,14 +13,8 @@ def __get_lon_lat():
         return tuple(temp_var)
 
 
-def calculate_distance_current(other_loc):
-    try:
-        distance = great_circle(__get_lon_lat(), other_loc)
-        return distance
-    except:
-        print("Error! Could not retrieve location or data input was faulty.")
-
-
+# Calculates distance between source lon/lat and target lon/lat using great_circle
+# and returns the distance in KM
 def calculate_distance(src_loc, other_loc):
     try:
         distance = great_circle(src_loc, other_loc)
