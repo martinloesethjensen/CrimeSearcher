@@ -39,10 +39,11 @@ def beautify_data_json(data):
 
 
 def parse_json(data):
-    with open("output-files/dataset.json", "w") as json_file:
-        json_file.write("""[
-        """ + beautify_data_json(data) + """]""")
+    try:
+        with open("output-files/dataset.json", "w") as json_file:
+            json_file.write("""[
+            """ + beautify_data_json(data) + """]""")
 
-    json_file.close()
-
-    webbrowser.open("file://" + os.path.realpath("output-files/dataset.json"))
+        webbrowser.open("file://" + os.path.realpath("output-files/dataset.json"))
+    except FileNotFoundError:
+        print("File not found")

@@ -43,7 +43,7 @@ def get_crimes_from_proximity(crime_list, src_loc) -> list:
             print("No crimes in proximity!")
         return scanned_list
 
-    except:
+    except ValueError:
         print("Error in data!")
 
 

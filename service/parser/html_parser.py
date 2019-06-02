@@ -35,31 +35,31 @@ def beautify_data_html(data):
 
 
 def parse_html(data):
-    html_file = open("output-files/dataset.html", "w")
+    try:
+        with open("output-files/dataset.html", "w") as html_file:
+            html_file.write("""
+            <html>
+                <head></head>
+                <body>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>cdatetime</th>
+                            <th>address</th>
+                            <th>district</th>
+                            <th>beat</th>
+                            <th>grid</th>
+                            <th>crimedescr</th>
+                            <th>ucr_ncic_code</th>
+                            <th>latitude</th>
+                            <th>longitude</th>
+                        </tr>
+                            """ + beautify_data_html(data) + """
+                    </table>
+                </body>
+            </html>
+            """)
 
-    html_file.write("""
-    <html>
-        <head></head>
-        <body>
-            <table>
-                <tr>
-                    <th></th>
-                    <th>cdatetime</th>
-                    <th>address</th>
-                    <th>district</th>
-                    <th>beat</th>
-                    <th>grid</th>
-                    <th>crimedescr</th>
-                    <th>ucr_ncic_code</th>
-                    <th>latitude</th>
-                    <th>longitude</th>
-                </tr>
-                    """ + beautify_data_html(data) + """
-            </table>
-        </body>
-    </html>
-    """)
-
-    html_file.close()
-
-    webbrowser.open("file://" + os.path.realpath("output-files/dataset.html"))
+        webbrowser.open("file://" + os.path.realpath("output-files/dataset.html"))
+    except FileNotFoundError:
+        print("File not found")
