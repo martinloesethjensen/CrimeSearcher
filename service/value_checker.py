@@ -1,7 +1,6 @@
 import simple_colors
 
 import app
-from service import gps
 
 
 def check_value(value):
@@ -16,9 +15,7 @@ def check_value(value):
     elif value == 2:
         app.report_crime()
     elif value == 3:
-        gps.print_crimes_by_proximity(crime_list=app.get_crime_list())
-
-    # TODO: add last option when functionality is done.
+        app.proximity_search(crime_list=app.get_crime_list())
 
     return False
 
@@ -56,4 +53,18 @@ def check_export_value(value: int):
         return "json"
     elif value == 2:
         return "html"
+    return "0"
+
+
+def check_proximity_option_value(value: int):
+    if value == 0:
+        print(simple_colors.red("Not a valid option..."))
+        return "0"
+    elif value == -1:
+        print(simple_colors.red("No proximity option chosen..."))
+        return "-1"
+    elif value == 1:
+        return "1"
+    elif value == 2:
+        return "2"
     return "0"
