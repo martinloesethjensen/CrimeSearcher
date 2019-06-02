@@ -1,5 +1,6 @@
 import simple_colors
 
+import service.gps as gps
 from service import printer, value_checker
 from service.parser import csv_parser, html_parser, json_parser
 
@@ -19,12 +20,45 @@ def get_crimes_from_term(search_term: str, category: str) -> list:
     return list(filter(lambda row: row[category] == search_term.upper(), get_crime_list()))
 
 
+# Returns a list of scanned locations that were within proximity (5km) of source lon/lat
+def get_crimes_from_proximity(crime_list, src_loc) -> list:
+    scanned_list = []
+    personal_coords = None
+
+    if src_loc is None:
+        personal_coords = gps.__get_lon_lat()
+
+    try:
+        for item in crime_list:
+            coords = (item["latitude"], item["longitude"])
+
+            if src_loc is None:
+                if gps.calculate_distance(coords, personal_coords) < 5.0:
+                    scanned_list.append(item)
+            else:
+                if gps.calculate_distance(src_loc, coords) < 5.0:
+                    scanned_list.append(item)
+
+        if len(scanned_list) is 0:
+            print("No crimes in proximity!")
+        return scanned_list
+
+    except ValueError:
+        print("Error in data!")
+
+
+# Getting the category from user_input chosen
 def get_category():
     return value_checker.check_search_value(get_number_input(simple_colors.yellow("Please enter a number: ")))
 
 
+# Getting the category from user_input chosen
 def get_export_format():
     return value_checker.check_export_value(get_number_input(simple_colors.yellow("Please enter a number: ")))
+
+
+def get_proximity_option():
+    return value_checker.check_proximity_option_value(get_number_input(simple_colors.yellow("Please enter a number: ")))
 
 
 # Method to handling exporting the to the chosen format
@@ -51,6 +85,27 @@ def search():
         search_term = input("Search: ")
         results = get_crimes_from_term(search_term, category)
         printer.print_results(results)
+        while export_quit == "0" and len(results) != 0:
+            printer.print_export_options()
+            export_quit = export_format = get_export_format()
+            exporting(export_format, results)
+
+
+def proximity_search(crime_list, src_loc=None):
+    search_quit, export_quit = 2 * "0"
+    export_format, proximity_option = "", ""
+
+    while search_quit == "0":
+        printer.print_proximity_options()
+        search_quit = proximity_option = get_proximity_option()
+
+    if proximity_option != "-1":
+        if proximity_option == "1":
+            src_loc = (input("Longitude & Latitude: "))
+
+        results = get_crimes_from_proximity(crime_list, src_loc)
+        printer.print_results(results)
+
         while export_quit == "0" and len(results) != 0:
             printer.print_export_options()
             export_quit = export_format = get_export_format()
