@@ -16,7 +16,110 @@ pip install simple-colors | pip install geographiclib | pip install geopy
 ## Usage
 Run the `app.py` to start the program. 
 
-Tests can be found in `test` folder.
+> Remember to be in the same folder as the `app.py` file.
+
+```bash
+python app.py
+```
+
+### Searching Using Category:
+First thing printed out is the menu.
+
+```
+--- Main Menu ---
+Enter 1: Search for a crime
+Enter 2: Report a crime
+Enter 3: Find crimes in proximity
+Enter -1: Quit
+
+Please enter a number: 
+```
+
+To search for a crime on a specific category you'd have to input `1` in the console.
+
+The next being displayed is a list of categories with examples to search for.
+
+```
+--- Categories ---
+Enter 1: Date and time '1/1/06 0:00'
+Enter 2: Address '3108 OCCIDENTAL DR'
+Enter 3: District '2'
+Enter 4: Grid '508'
+Enter 5: Crime description '10851(A)VC TAKE VEH W/O OWNER'
+Enter 6: UCR NCIC CODE '2404'
+Enter -1: Go back
+
+Please enter a number: 
+```
+
+For example input `1` to search by date and time. We will use the example.
+
+```
+Please enter a number: 1
+Search: 1/1/06 0:00
+```
+
+The results would be as following:
+
+```
+...
+
+Result 20:
+	cdatetime:           1/1/06 0:00
+	address:             5641 DORSET WAY
+	district:            4
+	beat:                4C        
+	grid:                1225
+	crimedescr:          484J PC PUBLISH CARD INFO
+	ucr_ncic_code:       2605
+	latitude:            38.52459987
+	longitude:           -121.5203609
+Results: 20
+```
+
+The user can then choose if he/she wants to export the results in either HTML or JSON format.
+
+```
+--- Export Options ---
+Enter 1: JSON format
+Enter 2: HTML format
+Enter -1: Don't export
+
+Please enter a number: 
+```
+
+If user chose to export the results, then he/she can find the files in `output-files` folder.
+
+> The file will automatically get opened.
+
+
+### Tests
+Tests can be found in `test` folder and can be run as following. 
+
+> Unittest supports simple [test discovery.](https://docs.python.org/3/library/unittest.html#test-discovery) 
+
+```bash
+python -m unittest discover -s test -p "*_test.py"
+```
+
+> Discovers all files ending with: `_test.py`
+
+```bash
+python -m unittest discover -s test -p "value_test.py"
+```
+
+> Discovers a specific file: `value_test.py`
+
+#### Examples:
+
+##### Indexed filenames:
+`value_test.py`
+`gps_test.py`
+
+##### Unindexed filenames:
+`value.py`
+`gps_test2.py`
+
 
 ## Exam Requirements
 * The project should be finished, meaning: don´t hand in and show up at the exam with something half done.  
