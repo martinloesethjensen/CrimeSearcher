@@ -120,15 +120,6 @@ python -m unittest discover -s test -p "value_test.py"
 `value.py`
 `gps_test2.py`
 
-
-## Exam Requirements
-* The project should be finished, meaning: don´t hand in and show up at the exam with something half done.  
-* Your code will be evaluated in terms of readability  
-* Your project will be evaluated in relation to the extent to which it is perceived as a finished product.  
-* The code should be documented and you should be able to explain why you documented your code in the way you did.  
-* The code should be tested and you should at the exam be abel to talk about your tests and demonstrate them.
-
-
 ## Application Requirements
 * In the application you should be able to search for crimes based on the data in the different columns in the dataset.
 * The application should be able to take a gps point (lon-lat) and return a list of crimes made within a radius of 5 km.
