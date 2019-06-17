@@ -42,7 +42,7 @@ def parse_json(data):
     try:
         with open("output-files/dataset.json", "w") as json_file:
             json_file.write("""[
-            """ + beautify_data_json(data) + """]""")
+        """ + beautify_data_json(data) + """]""")
 
         webbrowser.open("file://" + os.path.realpath("output-files/dataset.json"))
     except FileNotFoundError:
